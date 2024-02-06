@@ -13,23 +13,22 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         architecture: [x64, x86, arm64, armv7]
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Set up Rust
-      uses: actions/setup-rust@v1
-      with:
-        rust-version: stable
-
     - name: Build
       run: cargo build --verbose --release --target ${{ matrix.os }}-${{ matrix.architecture }}
 
     - name: Run tests
       run: cargo test --verbose --target ${{ matrix.os }}-${{ matrix.architecture }}
+
+    - uses: actions/checkout@v3
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "release.tar.gz,foo/*.txt"
+        bodyFile: "body.md"
