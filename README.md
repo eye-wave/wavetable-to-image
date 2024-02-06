@@ -10,10 +10,8 @@ This is a command-line tool that converts WAV files into images. It's useful for
 
 ### Examples
 ![](./assets/fm-sine-sine.png)
-![](./assets/fm-sine-sine.wav)
 
 ![](./assets/hyperwave.png)
-![](./assets/hyperwave.wav)
 
 
 ## Builting from source
