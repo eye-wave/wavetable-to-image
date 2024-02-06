@@ -8,6 +8,14 @@ This is a command-line tool that converts WAV files into images. It's useful for
 
 *Maybe i'll expand this cli in the future* so you could import images to synths like [Harmor](https://www.image-line.com/fl-studio-news/introducing-harmor/) too...
 
+### Examples
+![](./assets/fm-sine-sine.png)
+![](./assets/fm-sine-sine.wav)
+
+![](./assets/hyperwave.png)
+![](./assets/hyperwave.wav)
+
+
 ## Builting from source
 
 Make sure you have cargo and make installed. Clone this repository and run:
