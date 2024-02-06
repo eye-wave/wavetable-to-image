@@ -14,9 +14,22 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        architecture: [x64, x86, arm64, armv7]
+
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Rust
+      uses: actions/setup-rust@v1
+      with:
+        rust-version: stable
+
     - name: Build
-      run: cargo build --verbose
+      run: cargo build --verbose --release --target ${{ matrix.os }}-${{ matrix.architecture }}
+
     - name: Run tests
-      run: cargo test --verbose
+      run: cargo test --verbose --target ${{ matrix.os }}-${{ matrix.architecture }}
